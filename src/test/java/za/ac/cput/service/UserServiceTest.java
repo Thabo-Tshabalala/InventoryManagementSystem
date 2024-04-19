@@ -30,16 +30,26 @@ void a_setup(){
 
     @Test
     void c_read() {
-User id = new User(user1.getUserID(),user1.getName(),user1.getSurname(), user1.getEmail(),user1.getPassword(),user1.isRole());
-
+User readUser = new User.Builder().setUserID(user1.getUserID()).setName(user1.getName()).build();
+String reads = user1.getUserID();
+User read = userService.read(reads);
+assertNotNull(reads);
+        System.out.println(reads);
 
     }
 
     @Test
     void d_update() {
+    User users = new User.Builder().copy(user1).setName("owami").build();
+    User updatedUser = userService.update(users);
+    assertNotNull(updatedUser);
+        System.out.println(updatedUser);
     }
 
     @Test
     void e_getAll() {
+
+        System.out.println( userService.getAll());
+
     }
 }
