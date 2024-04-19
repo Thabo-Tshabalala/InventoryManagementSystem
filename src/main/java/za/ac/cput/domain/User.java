@@ -1,19 +1,22 @@
 package za.ac.cput.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.Objects;
-
+@Entity
 public class User {
+@Id
+    protected String userID;
+    protected String name;
+    protected String surname;
+    protected String email;
+    protected String password;
+    protected boolean role;
 
-    private String userID;
-    private String name;
-    private String surname;
-    private String email;
-    private String password;
-    private boolean role;
 
 
-
-    protected User(){}
+    public User(){}
     public User(Builder builder){
         this.userID = builder.userID;
         this.name = builder.name;
@@ -58,6 +61,18 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(userID, name, surname, email, password, role);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID='" + userID + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
     }
 
     public static class Builder{
